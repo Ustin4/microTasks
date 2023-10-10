@@ -13,7 +13,7 @@ type LoginFieldsType = {
     email: string
     password: string
 }
-//test commit
+//test push
 // API
 const instance = axios.create({baseURL: 'https://exams-frontend.kimitsu.it-incubator.ru/api/'})
 
