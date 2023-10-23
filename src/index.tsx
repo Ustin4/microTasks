@@ -1,54 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom/client'
+import App from "./App";
 
-type UserType = {
-    id: string;
-    name: string;
-    age: number;
-}
-
-// API
-const instance = axios.create({baseURL: 'https://exams-frontend.kimitsu.it-incubator.ru/api/'})
-
-const api = {
-    getUsers() {
-        return instance.get('users', {
-            params: {
-                pageSize: 3,
-                pageNumber: 2
-            }
-        });
-    },
-}
-
-// App
-export const App = () => {
-
-    const [users, setUsers] = useState<UserType[]>([])
-
-    useEffect(() => {
-        api.getUsers()
-            .then((res) => {
-                setUsers(res.data.items)
-            })
-    }, [])
-
-
-    return (
-        <>
-            <h1>👪 Список пользователей</h1>
-            {
-                users.map(u => {
-                    return <div style={{display: 'flex', gap: '10px'}} key={u.id}>
-                        <p><b>name</b>: {u.name}</p>
-                        <p><b>age</b>: {u.age}</p>
-                    </div>
-                })
-            }
-        </>
-    )
-}
 
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
